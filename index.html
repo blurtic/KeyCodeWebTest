@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
 
+<head>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>KeyCodeTest</h1>
+			<h1 id="keycodeText">keyCode</h1>
+		</div>
+	</div>
+	<script>
+		const body = document.querySelector('body');
+		var keyCodeText = document.getElementById("keycodeText");
+		body.onkeydown = function(e) {
+			keyCodeText.innerText = e.keyCode;
+			if(e.keyCode == 112)
+			{
+				console.log("112 Detected");
+				window.location.href = "ncmop://dont_show_again";
+			}
+		}
+	</script>
+</body>
+
+</html>
