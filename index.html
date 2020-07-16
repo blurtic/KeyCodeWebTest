@@ -15,12 +15,17 @@
 	<script>
 		const body = document.querySelector('body');
 		var keyCodeText = document.getElementById("keycodeText");
-		body.onkeyup = function(e) {
+		body.onkeydown = function(e) {
 			keyCodeText.innerText = e.keyCode;
 			if(e.keyCode == 112)
 			{
 				console.log("112 Detected");
 				window.location.href = "ncmop://dont_show_again";
+			}
+			else if(e.keyCode == 27)
+			{
+				console.log("27 Detected");
+				window.location.href = "ncmop://close";
 			}
 		}
 	</script>
