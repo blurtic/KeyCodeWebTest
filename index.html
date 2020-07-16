@@ -15,7 +15,7 @@
 	<script>
 		const body = document.querySelector('body');
 		var keyCodeText = document.getElementById("keycodeText");
-		body.onkeydown = function(e) {
+		body.onkeyup = function(e) {
 			keyCodeText.innerText = e.keyCode;
 			if(e.keyCode == 112)
 			{
