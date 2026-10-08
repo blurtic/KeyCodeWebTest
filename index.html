@@ -8,6 +8,11 @@
 <body>
 	<div class="container">
 		<div class="header">
+			<h2>
+				<input type="text" id="customUrlInput" placeholder="ncmop://..." style="width: 60%;" />
+				<button type="button" id="customUrlButton">이동</button>
+			</h2>
+			<h2><a id="customUrlLink" href="#" target="deeplink"></a></h2>
 			<h2><a href="ncmop://close" target="deeplink">ncmop://close</a></h2>
 			<h2><a href="ncmop://custom_value?values=testvalue" target="deeplink">ncmop://custom_value?values=testvalue</a></h2>
 			<h2><a href="ncmop://custom_value?values=testvalue&wv_close=yes" target="deeplink">ncmop://custom_value?values=testvalue&wv_close=yes</a></h2>
@@ -24,6 +29,22 @@
 	<script>
 		const body = document.querySelector('body');
 		var keyCodeText = document.getElementById("keycodeText");
+
+		var customUrlInput = document.getElementById("customUrlInput");
+		var customUrlLink = document.getElementById("customUrlLink");
+		customUrlInput.oninput = function() {
+			customUrlLink.href = customUrlInput.value.trim() || "#";
+			customUrlLink.innerText = customUrlInput.value.trim();
+		}
+		document.getElementById("customUrlButton").onclick = function() {
+			var url = customUrlInput.value.trim();
+			if(url == "")
+				return;
+			customUrlLink.href = url;
+			customUrlLink.innerText = url;
+			customUrlLink.click();
+		}
+
 		body.onkeydown = function(e) {
 			keyCodeText.innerText = e.keyCode;
 			if(e.keyCode == 112)
